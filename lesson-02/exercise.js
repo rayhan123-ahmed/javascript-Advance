@@ -63,7 +63,7 @@ console.log(totalTex2);
     const fahrenheitM = 86
     const celsiusM = (fahrenheitM-32)*5/9
     console.log(celsiusM);
-                // question No. M  
+                // question No. N 
         // C = -5°C
     const celsiusN = -5
     const fahrenheitN = (celsiusN*9/5)+32
