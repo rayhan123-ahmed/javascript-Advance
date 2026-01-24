@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcuter</title>
+</head>
+<body>
+    <button onclick="
+        calculation += '1'
+        console.log(`calculation ${calculation}`);
+        ">1</button>
+    <button onclick="
+        calculation += '2'
+        console.log(`calculation ${calculation}`);     
+    ">2</button>
+    <button onclick="
+        calculation += '3'
+        console.log(`calculation ${calculation}`);   
+    ">3</button>
+    <button onclick="
+        calculation += '+'
+        console.log(`calculation ${calculation}`);    
+    ">+</button>
+    <button onclick="
+    if(calculation !== ''){
+        calculation = eval(calculation);
+        console.log(`calculation ${calculation}`);
+    }
+    ">=</button>
+    
+</body>
+<script>
+    let calculation = ''
+</script>
+</html>
