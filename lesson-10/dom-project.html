@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Project</title>
+    <style>
+  body{
+    font-family: Arial;
+  }
+  .sub-btn {
+      border: none;
+      background-color: #020202;
+      color: #ffffff;
+      padding: .5rem .9rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 2rem;
+  }
+  .subscribed-btn{
+    background-color: rgb(240, 240, 240);
+    color: #020202;
+  }
+  .input-cost{
+    padding: .6rem;
+  }
+  .calcution-btn{
+   padding: .7rem;
+   border: none;
+   background-color: green;
+   color: #ffffff;
+  }
+    </style>
+</head>
+<body>
+   <p>Youtube Subscribe Button</p>
+    <button class="sub-btn" onclick="
+      Subscribe()
+    ">Subscribe</button>
+
+     <p>Amazon Free shiping Calculator</p>
+     <p>Orders under $40 = +$10 shipping.</p>
+     <p>Orders over $40 = FREE shipping.</p>
+
+     <input class="input-cost" type="text" placeholder="Cost of order" onkeydown="
+       keyDwon(event)
+     ">
+     <button class="calcution-btn" onclick="
+       calcution()
+     ">Calculate</button>
+    <p class="totalCost"></p>
+     
+    <script>
+    // Created Funstion for keydwon event
+    function keyDwon(event) {
+       if (event.key === 'Enter') {
+          calcution()
+       }
+    }
+    // Creeated funtion for calculation
+     function calcution() {
+        const input = document.querySelector('.input-cost');
+        let cost =Number( input.value) ;
+
+        if(cost < 40){
+          cost = cost + 10
+        }
+
+     document.querySelector('.totalCost')
+      .innerHTML = `$${cost}`
+     }
+    // created function for text changed
+   function Subscribe(){
+          const btnEl = document.querySelector('.sub-btn');
+
+        if(btnEl.innerHTML === 'Subscribe'){
+             btnEl.innerHTML = 'Subscribed'
+             btnEl.classList.add('subscribed-btn');
+        }else{
+            btnEl.innerHTML = 'Subscribe'
+            btnEl.classList.remove('subscribed-btn');
+        }
+   }
+    </script>
+</body>
+</html>
