@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9e</title>
+</head>
+<body>
+    <input type="text" class="js-input" onkeyup="
+           handleKey(event)
+    ">
+    <button  onclick="
+     submit()
+    ">Submit</button>
+    <p class="js-massage"></p>
+</body>
+ <script>
+    function submit() {
+         const inputEl = document.querySelector('.js-input');
+         document.querySelector('.js-massage').innerHTML = `Your name is ${inputEl.value}`
+    }
+
+
+   function handleKey(event) {
+      if (event.key === 'Enter' || event.key === 'Shift') {
+        submit();
+      }
+    }
+ </script>
+</html>
