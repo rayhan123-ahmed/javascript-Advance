@@ -1,0 +1,28 @@
+body{
+    font-family: Arial;
+}
+.todo-grid,
+.todo-input-grid{
+    display: grid;
+    grid-template-columns: 10rem 7rem 5rem;
+    column-gap: .8rem;
+    row-gap: .8rem;
+}
+.todo-input-grid{
+    margin-bottom: 1.6rem;
+}
+.add-btn {
+    background-color: green;
+    color: #ffff;
+    border: none;
+    padding: .4rem .5rem;
+    cursor: pointer;
+}
+.detete-btn{
+    background-color: darkred;
+    color: #ffff;
+    border: none;
+    padding: .4rem .5rem;
+    cursor: pointer;
+}
+ 
