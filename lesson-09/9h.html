@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9h</title>
+</head>
+<body>
+      <input type="text"
+       placeholder="Type Something...."
+       class="input-js"
+       onkeydown="keyDwon(value)
+       ">
+
+      <p class="p-js"></p>
+</body>
+  <script>
+     function showText() {
+        const inputEl = document.querySelector('.input-js')
+        const inputElValue = inputEl.value
+        document.querySelector('.p-js').innerHTML = inputElValue;
+     }
+
+     function keyDwon(value) {
+        if (event.key === 'Enter') {
+            showText()
+            document.querySelector('.input-js').value = ''
+        }
+     }
+
+  </script>
+</html>
