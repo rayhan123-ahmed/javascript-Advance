@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+.message {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    color: green;
+    font-weight: 600;
+}
+
+    </style>
+    <title>12ff</title>
+</head>
+<body>
+    <button onclick="updateMessage()">Add</button>
+    <p class="js-p message"></p>
+
+</body>
+<script>
+ let timeOutId;
+
+function updateMessage() {
+  const messageEl = document.querySelector('.js-p');
+
+  // Show message
+  messageEl.innerHTML = 'Added';
+  messageEl.style.opacity = '1';
+
+  // Clear old timeout
+  clearTimeout(timeOutId);
+
+  // Hide after 2 seconds
+  timeOutId = setTimeout(() => {
+    messageEl.style.opacity = '0';
+  }, 2000);
+}
+
+
+
+</script>
+</html>
