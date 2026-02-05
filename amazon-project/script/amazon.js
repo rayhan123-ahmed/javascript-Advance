@@ -1,6 +1,10 @@
 // Save The products data on a varibale
   // this data store in file name: amazon-project/data/product.js
 
+  // import variable from another file
+    import {cart,addToCart} from "../data/cart.js";
+    import{products} from "../data/products.js"
+
  // Genarte html
  let productHTML =''
 
@@ -61,42 +65,32 @@
 
   document.querySelector('.js-product-grid').innerHTML = productHTML
 
+
+// update cart quantity funtion
+ function updateCartQuantity() {
+   
+      // Total cart quanity
+       let cartQuantity = 0;
+
+       cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+       });
+    
+      //To show cart quantity on the page header
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+ }
+
 // Acces all the add to cart button and has done some work
   document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     button.addEventListener('click',()=>{
       // data set atribute
       const productId = button.dataset.productId;
        
-      // Using for each to catch all item quantity
-      let matchingItem;
-
-       cart.forEach((item)=>{
-        if(productId === item.productId){
-          matchingItem = item
-        }
-       });
-
-
-       if (matchingItem) {
-        matchingItem.quantity += 1;
-       }else{
-        // push the object in a cart
-        cart.push({
-          productId:productId,
-          quantity: 1
-        });
-       }
-      // Total cart quanity
-       let cartQuantity = 0;
-
-       cart.forEach((item) => {
-        cartQuantity += item.quantity;
-       });
+      // Add to cart
+      addToCart(productId)
     
-      //To show cart quantity on the page header
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
-
-
+    // update cart quantity
+      updateCartQuantity()
     });
   });
 
