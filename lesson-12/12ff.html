@@ -16,15 +16,15 @@
     <title>12ff</title>
 </head>
 <body>
-    <button onclick="updateMessage()">Add</button>
+    <button class="click">Add</button>
     <p class="js-p message"></p>
 
 </body>
 <script>
- let timeOutId;
-
-function updateMessage() {
-  const messageEl = document.querySelector('.js-p');
+  let timeOutId;
+  
+    document.querySelector('.click').addEventListener('click',()=>{
+         const messageEl = document.querySelector('.js-p');
 
   // Show message
   messageEl.innerHTML = 'Added';
@@ -37,9 +37,7 @@ function updateMessage() {
   timeOutId = setTimeout(() => {
     messageEl.style.opacity = '0';
   }, 2000);
-}
-
-
+});
 
 </script>
 </html>

@@ -6,26 +6,25 @@
     <title>12f</title>
 </head>
 <body>
-    <button onclick="
-        updateMassage()
-    " class="click">Add to cart</button>
+    <button class="click js-click">Add to cart</button>
     <p class="js-p"></p>
 </body>
 <script>
     let timeOutId;
 
- function updateMassage() {
-   const massageel = document.querySelector('.js-p');
-   massageel.innerHTML = 'Added'
+    document.querySelector('.js-click').addEventListener('click',()=>{
+        const massageEl = document.querySelector('.js-p');
+        const clickEl = document.querySelector('.click')
+        clickEl.innerHTML = 'Adding...';
+
    
    clearTimeout(timeOutId)
 
-   setTimeout(()=> {
-    massageel.innerHTML = ''
+  timeOutId = setTimeout(()=> {
+    massageEl.innerHTML = 'Added'
+    clickEl.innerHTML = 'Add to cart';
    },2000)
-
- }
-
+});
 
 </script>
 </html>

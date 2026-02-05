@@ -9,21 +9,33 @@
       updateScore()
        
     // This funtion has been created for auto play
+
+    const autoPlayBtn = document.querySelector('.auto-play-btn')
+
     let isAutoPlaying = false
     let intervelId;
+  
+    autoPlayBtn.addEventListener('click',()=>{
+      autoPlay() 
+    })
+    //  auto play function
 
-       function autoplay() {
+     function autoPlay() {
         if (!isAutoPlaying) {
            intervelId = setInterval(()=> {
             const playerMove = pickComputerMove()
              playGame(playerMove)
           },1000)
           isAutoPlaying = true
+          autoPlayBtn.innerHTML = 'Stop Playing'
         }else{
             clearInterval(intervelId);
             isAutoPlaying = false
+            autoPlayBtn.innerHTML = 'Auto play'
         }
-       }
+     }
+
+
     // Add eventListner for rock papper scissor
      document.querySelector('.js-rock-btn').addEventListener('click',()=>{
         playGame('rock');
@@ -126,5 +138,33 @@
 
         return computerMove;
       }
+    // This funtion has been created for reset score
+     function resetScore() {
+        score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+      localStorage.removeItem('score');
+      updateScore();
+     }
     
-    
+     const resetBtnEl = document.querySelector('.js-reset-score')
+     resetBtnEl.addEventListener('click',()=>{
+        resetScore()
+     })
+
+
+    //  control the game with kyboard
+ document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r') {
+    playGame('rock');
+  } else if (event.key === 'p') {
+    playGame('paper');
+  } else if (event.key === 's') {
+    playGame('scissors');
+  } else if (event.key === 'a') {
+    autoPlay();
+  } else if (event.key === 'Backspace') {
+      resetScore()
+  }
+});
+
