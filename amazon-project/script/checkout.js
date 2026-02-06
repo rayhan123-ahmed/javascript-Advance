@@ -18,7 +18,7 @@ cart.forEach((cartItem)=>{
  })
 
    cartsummeryHTMl+= `
-    <div class="cart-item-container">
+    <div class="cart-item-container cart-item-container-${matchingProduct.id} ">
         <div class="delivery-date">
             Delivery date: Wednesday, June 15
         </div>
@@ -41,7 +41,7 @@ cart.forEach((cartItem)=>{
                 <span class="update-quantity-link link-primary">
                 Update
                 </span>
-                <span class="delete-quantity-link link-primary js-delete-link
+                <span class="delete-quantity-link link-primary js-delete-link"
                  data-product-id="${matchingProduct.id}">
                 Delete
                 </span>
@@ -99,14 +99,23 @@ cart.forEach((cartItem)=>{
 
 // Making Delete button intarective
 document.querySelectorAll('.js-delete-link')
-  .forEach((link)=>{
-    link.addEventListener('click',()=>{
-        const productId = link.dataset.productId
+  .forEach((link) => {
+    link.addEventListener('click', () => {
+      const productId = link.dataset.productId;
+      console.log(productId);
+      
+      // Remove from cart data
+      removeFromCart(productId);
 
-        // Delete cart funtion
-        removeFromCart(productId)
-    })
-})
+      // Remove from DOM
+      const container = document.querySelector(
+        `.cart-item-container-${productId}`
+      );
+      if (container) {
+        container.remove();
+      }
+    });
+  });
 
 
   
