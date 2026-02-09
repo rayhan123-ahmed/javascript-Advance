@@ -7,11 +7,9 @@ import {deliveryOptions} from "../data/deliveryOption.js"
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 
 
-
-
-
-
-// Genarte HTML
+// this funtion has been created for rnder all the code
+function renderOrderSummery() {
+   // Genarte HTML
 let cartsummeryHTMl = ''
 
 cart.forEach((cartItem)=>{
@@ -152,7 +150,9 @@ document.querySelectorAll('.js-delivery-option')
       const { productId, deliveryOptionId } = element.dataset;
 
       updateDeliveryOption(productId, deliveryOptionId);
+      renderOrderSummery()
     });
   });
+}
 
-  
+renderOrderSummery()
