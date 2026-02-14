@@ -1,11 +1,14 @@
+class Cart  {
+ cartItem;
+ localStorageKey;
 
-function Cart(localStorageKey) {
-    const cart = {
-     cartItem : undefined,
+ constructor(localStorageKey){
+  this.localStorageKey = localStorageKey; 
+  this.loadFromStorage()
+ }
 
-
-    loadFromStorage () {
-    this.cartItem = JSON.parse(localStorage.getItem(localStorageKey))
+  loadFromStorage () {
+    this.cartItem = JSON.parse(localStorage.getItem(this.localStorageKey))
         
       if (!this.cartItem) {
         this.cartItem = [{
@@ -20,12 +23,11 @@ function Cart(localStorageKey) {
         deliveryOptionId: '2'
       }]
  }; 
-},
- 
-// Save cart in local storage 
+}
+ // Save cart in local storage 
    saveStorage() {
-    localStorage.setItem(localStorageKey,JSON.stringify(this.cartItem))
-  },
+    localStorage.setItem(localStorage,JSON.stringify(this.cartItem))
+  };
   // Add to cart funtion
  addToCart(productId) {
     // Using for each to catch all item quantity
@@ -49,7 +51,7 @@ function Cart(localStorageKey) {
         });
        }
        this.saveStorage()
-  },
+  };
 
   // This funtion has been created for remove the cart
 
@@ -63,7 +65,7 @@ function Cart(localStorageKey) {
     });
     this.cartItem = newcart
     this.saveStorage()
-  },
+  };
   
   // to update delivery option on the page
 
@@ -80,15 +82,17 @@ function Cart(localStorageKey) {
        this.saveStorage()
   }
 };
-return cart
-}
 
 
 
-const cart = Cart('cart-oop');
-const businessCart = Cart('business-cart')
-businessCart.loadFromStorage()
-cart.loadFromStorage()
+
+
+
+
+const cart = new Cart('cart-oop')
+const businessCart = new Cart('cart-business')
+
+
 
 
 
